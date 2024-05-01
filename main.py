@@ -1,12 +1,25 @@
 from Chest_Cancer_Classifier import logger
 from Chest_Cancer_Classifier.pipline.stage_01_data_ingestion import DataIngestionTrainingPipline
- 
+from Chest_Cancer_Classifier.pipline.stage_02_prepare_base_model import PrepareBaseModelTrainingPipline
 
 STAGE_NAME = 'Data Ingestion stage'
 
 try:
         logger.info(f">>>>>> Stage {STAGE_NAME} started <<<<<<")
         obj = DataIngestionTrainingPipline()
+        obj.main()
+        logger.info(f">>>>>> Stage {STAGE_NAME} completed <<<<<< \n\n")
+     
+except Exception as e:
+         logger.exception(e)
+         raise e
+
+
+STAGE_NAME = 'Prepare Base Model'
+
+try:
+        logger.info(f">>>>>> Stage {STAGE_NAME} started <<<<<<")
+        obj = PrepareBaseModelTrainingPipline()
         obj.main()
         logger.info(f">>>>>> Stage {STAGE_NAME} completed <<<<<< \n\n")
      
